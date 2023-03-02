@@ -24,7 +24,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader", path.resolve('lib/main.js')],
+        use: ["babel-loader", "s2w-loader"],
       },
     ],
   },

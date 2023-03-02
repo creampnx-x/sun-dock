@@ -62,6 +62,5 @@ exports.default = function (source) {
     });
 
     const { code } = generator(sourceAst);
-    // console.log(code);
     return code;
 }
