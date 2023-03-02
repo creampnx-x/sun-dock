@@ -31,13 +31,35 @@ exports.default = function (source) {
                 const resultKeyMap = map[originKey];
                 if (!resultKeyMap) return;
 
-                const originValue = value.value;
-                const targetClass = resultKeyMap[originValue];
-                if (!targetClass) return;
+                let targetClass = "";
+                // todo: need optimize
+                // Numberic: sufix `-px`
+                if (value.type === 'NumericLiteral') {
+                    targetClass.concat(`${resultKeyMap["*"]}-${value.value}px`);
+                } else {
+                    // String: if Map[*] exist: add sufix;
+                    // else if Map[value] exist: using result;
+                    // else finish;
+                    const originValue = value.value;
+                    const result = resultKeyMap[originValue];
 
+                    if (result) { // fixed props: text-align: center => text-center
+                        targetClass = result;
+                    } else if (resultKeyMap['get']) { // for spacing like: padding: ''
+                        const result = resultKeyMap['get'](originValue);
+                        if (!result.length) return;
+                        targetClass = result.join(' ');
+                    } else if (resultKeyMap['*']) { // one value like: padding-left: 1px => pl-1px
+                        targetClass = `${resultKeyMap["*"]}-${originValue}`;
+                    }
+                    
+                    if (!targetClass.length) return;
+                }
                 targetClasses.push(targetClass);
             });
-            if (!targetClasses.length) return;
+
+            // some of style props cant trans, so recover all.
+            if (!targetClasses.length || targetClasses.length !== styleProps.length) return;
 
             let originClasses = "";
             const classNamesAttr = attributes.find(attr => attr.name?.name === 'className');

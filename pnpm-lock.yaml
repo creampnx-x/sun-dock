@@ -19,17 +19,17 @@ importers:
 
   packages/s2w-cli:
     specifiers:
-      core: workspace:*
+      '@sun-dock/core': workspace:*
       minimist: ^1.2.8
     dependencies:
-      core: link:../core
+      '@sun-dock/core': link:../core
       minimist: 1.2.8
 
   packages/s2w-loader:
     specifiers:
-      core: workspace:*
+      '@sun-dock/core': workspace:*
     dependencies:
-      core: link:../core
+      '@sun-dock/core': link:../core
 
   site:
     specifiers:
@@ -40,12 +40,12 @@ importers:
       '@babel/preset-react': ^7.17.12
       '@babel/traverse': ^7.21.2
       '@babel/types': ^7.21.2
+      '@sun-dock/s2w-loader': workspace:*
       babel-loader: ^8.2.5
       html-webpack-plugin: ^5.5.0
       minimist: ^1.2.8
       react: ^18.1.0
       react-dom: ^18.1.0
-      s2w-loader: workspace:*
       webpack: ^5.75.0
       webpack-cli: ^4.9.2
       webpack-dev-server: ^4.9.1
@@ -61,9 +61,9 @@ importers:
       '@babel/core': 7.21.0
       '@babel/preset-env': 7.20.2_@babel+core@7.21.0
       '@babel/preset-react': 7.18.6_@babel+core@7.21.0
+      '@sun-dock/s2w-loader': link:../packages/s2w-loader
       babel-loader: 8.3.0_qoaxtqicpzj5p3ubthw53xafqm
       html-webpack-plugin: 5.5.0_webpack@5.75.0
-      s2w-loader: link:../packages/s2w-loader
       webpack: 5.75.0_webpack-cli@4.10.0
       webpack-cli: 4.10.0_uaydpeuxkjjcxdbyfgk36cjdxi
       webpack-dev-server: 4.11.1_pda42hcaj7d62cr262fr632kue
