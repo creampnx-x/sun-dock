@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node index.test.js"
+    "test": "node index.test.js",
+    "gen:static": "node config/static/gen-static.js"
   },
   "keywords": [],
   "author": "",

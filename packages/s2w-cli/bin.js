@@ -1,20 +1,35 @@
 #!/usr/bin/env node
-
 const args = require('minimist')(process.argv.slice(2));
 const path = require('path');
 const fs = require('fs');
-const transform = require('@sun-dock/core').default;
+const { transform } = require('@sun-dock/core').default;
 
 const filePath = path.resolve(args['filename']);
-console.log(filePath, "ffff");
-fs.readFile(filePath, (err, source) => {
-    if (err) throw err;
+const query = args['query'];
 
-    console.log(source.toString());
-    const code = transform(source.toString());
+if (filePath) {
+    formatFile(filePath);
+}
+if (query) {
+    queryResult(query);
+}
 
-    fs.writeFile(filePath, code, (err) => {
+function formatFile(filePath) {
+    fs.readFile(filePath, (err, source) => {
         if (err) throw err;
-        console.log("transform done.");
+
+        const code = transform(source.toString());
+
+        fs.writeFile(filePath, code, (err) => {
+            if (err) throw err;
+            console.log("transform done.");
+        });
     });
-});
+}
+
+function queryResult(stylePair) {
+    const source = `<div style={{${stylePair}}} />`;
+    const result = transform(source);
+
+    console.log(`The input style pair ${stylePair} will tranform like this: \n ${result}`);
+}

@@ -2,8 +2,9 @@ const parse = require("@babel/parser");
 const traverse = require("@babel/traverse").default;
 const generator = require("@babel/generator").default;
 const types = require('@babel/types');
-const { Map: map } = require('./config/index');
+const { map } = require('./config/index');
 
+// todo: 抽离内部处理函数
 exports.default = function (source) {
     const sourceAst = parse.parse(source, {
         sourceType: "unambiguous",
@@ -46,8 +47,13 @@ exports.default = function (source) {
                 let targetClass = "";
                 // todo: need optimize
                 // Numberic: sufix `-px`
-                if (value.type === 'NumericLiteral') {
-                    targetClass.concat(`${resultKeyMap["*"]}-${value.value}px`);
+                if (value.type === 'NumericLiteral' && Number.parseInt(value.value) >= 0) {
+                    if (resultKeyMap['#']) {
+                        targetClass = `${resultKeyMap["#"]}-${value.value}`;
+                    } else if (resultKeyMap['*']) {
+                        targetClass = `${resultKeyMap["*"]}-${value.value}px`;
+                    }
+                    //targetClass.concat(`${resultKeyMap["*"]}-${value.value}px`);
                 } else {
                     // String: if Map[*] exist: add sufix;
                     // else if Map[value] exist: using result;
@@ -105,4 +111,6 @@ exports.default = function (source) {
 
     const { code } = generator(sourceAst);
     return code;
-}
+} 
+
+exports.styleMap = map;
