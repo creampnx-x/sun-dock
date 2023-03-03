@@ -1,4 +1,4 @@
-const transform = require('core').default;
+const transform = require('@sun-dock/core').default;
 
 exports.default = function (source) {
   return transform(source);

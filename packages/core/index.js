@@ -22,14 +22,26 @@ exports.default = function (source) {
             if (!styleProps?.length) return;
 
             const targetClasses = [];
+            
+            // todo: style props 分离可操作和不可操作的
+            // 在每一个 return 的地方记录不可转换的 style prop
+            const restProps = [];
             styleProps.forEach((property) => {
                 const { key, value } = property;
 
-                if (key.type !== "Identifier" || value.type.search('Literal') === -1) return;
+                if (key.type !== "Identifier" || value.type.search('Literal') === -1) {
+                    restProps.push(property);
+                    return;
+                }
 
                 const originKey = key.name;
                 const resultKeyMap = map[originKey];
-                if (!resultKeyMap) return;
+                if (!resultKeyMap) {
+                    // cant support props
+                    // console.log(`the style '${originKey}' can not be transform. \n If you can, please give us feedback: https://github.com/creampnx-x/style2class/issues, \n thank you.`);
+                    restProps.push(property);
+                    return;
+                }
 
                 let targetClass = "";
                 // todo: need optimize
@@ -47,19 +59,27 @@ exports.default = function (source) {
                         targetClass = result;
                     } else if (resultKeyMap['get']) { // for spacing like: padding: ''
                         const result = resultKeyMap['get'](originValue);
-                        if (!result.length) return;
+                        if (!result.length) {
+                            // maybe write wrong.
+                            restProps.push(property);
+                            return;
+                        }
                         targetClass = result.join(' ');
                     } else if (resultKeyMap['*']) { // one value like: padding-left: 1px => pl-1px
                         targetClass = `${resultKeyMap["*"]}-${originValue}`;
                     }
                     
-                    if (!targetClass.length) return;
+                    if (!targetClass.length) {
+                        restProps.push(property);
+                        return;
+                    }
                 }
                 targetClasses.push(targetClass);
             });
 
-            // some of style props cant trans, so recover all.
-            if (!targetClasses.length || targetClasses.length !== styleProps.length) return;
+            // all of style props cant trans, so recover it.
+            if (!targetClasses.length || targetClasses.length + restProps.length !== styleProps.length) return;
+            styleAttribute.value.expression.properties = restProps;
 
             let originClasses = "";
             const classNamesAttr = attributes.find(attr => attr.name?.name === 'className');
@@ -68,7 +88,7 @@ exports.default = function (source) {
             targetClasses.unshift(originClasses);
             const t = targetClasses.join(' ').trim();
 
-            const newAttributes = [];
+            const newAttributes = restProps.length ? [styleAttribute] : [];
             attributes.forEach(item => {
                 if (item.name?.name !== 'style' && item.name?.name !== 'className') {
                     newAttributes.push(item);

@@ -1,7 +1,7 @@
 const args = require('minimist')(process.argv.slice(2));
 const path = require('path');
 const fs = require('fs');
-const transform = require('core').default;
+const transform = require('@sun-dock/core').default;
 
 const filePath = path.resolve(args['filename']);
 

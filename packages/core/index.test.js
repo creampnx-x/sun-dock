@@ -7,6 +7,10 @@ const testSamples = [
     {
         input: `<div style={{ textAlign: 'center' }} />;`,
         output: `className="text-center"`
+    },
+    {
+        input: `<div style={{ backgroudUnknow: 'black', textAlign: 'center'  }} />;`,
+        output: `className="text-center"`
     }
 ];
 
@@ -14,7 +18,7 @@ const testSamples = [
     samples.forEach((sample, index) => {
         const code = transform(sample.input);
         if (code.search(output) !== -1) {
-            console.log(`pass => cese ${index}`);
+            console.log(`pass => cese ${index} ${code}`);
         } else {
             console.error(`not pass => case ${index}, \n ${code}`);
         }
