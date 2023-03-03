@@ -2,13 +2,13 @@
 const args = require('minimist')(process.argv.slice(2));
 const path = require('path');
 const fs = require('fs');
-const { transform } = require('@sun-dock/core').default;
+const transform = require('@sun-dock/core').default;
 
-const filePath = path.resolve(args['filename']);
 const query = args['query'];
+const filePath = args['filename'];
 
 if (filePath) {
-    formatFile(filePath);
+    formatFile(path.resolve(filePath));
 }
 if (query) {
     queryResult(query);
@@ -31,5 +31,5 @@ function queryResult(stylePair) {
     const source = `<div style={{${stylePair}}} />`;
     const result = transform(source);
 
-    console.log(`The input style pair ${stylePair} will tranform like this: \n ${result}`);
+    console.log(`The input style pair "${stylePair}" will tranform like this: \n ${result}`);
 }

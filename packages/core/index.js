@@ -23,7 +23,6 @@ exports.default = function (source) {
             if (!styleProps?.length) return;
 
             const targetClasses = [];
-
             // todo: style props 分离可操作和不可操作的
             // 在每一个 return 的地方记录不可转换的 style prop
             const restProps = [];
