@@ -19,7 +19,7 @@ importers:
 
   packages/s2w-cli:
     specifiers:
-      '@sun-dock/core': workspace:*
+      '@sun-dock/core': 1.0.0
       minimist: ^1.2.8
     dependencies:
       '@sun-dock/core': link:../core
@@ -40,8 +40,8 @@ importers:
       '@babel/preset-react': ^7.17.12
       '@babel/traverse': ^7.21.2
       '@babel/types': ^7.21.2
-      '@sun-dock/s2w-cli': workspace:*
-      '@sun-dock/s2w-loader': workspace:*
+      '@sun-dock/dock-cli': 1.0.0
+      '@sun-dock/s2w-loader': 1.0.0
       babel-loader: ^8.2.5
       css-loader: ^6.7.3
       html-webpack-plugin: ^5.5.0
@@ -65,7 +65,7 @@ importers:
       '@babel/core': 7.21.0
       '@babel/preset-env': 7.20.2_@babel+core@7.21.0
       '@babel/preset-react': 7.18.6_@babel+core@7.21.0
-      '@sun-dock/s2w-cli': link:../packages/s2w-cli
+      '@sun-dock/dock-cli': link:../packages/s2w-cli
       '@sun-dock/s2w-loader': link:../packages/s2w-loader
       babel-loader: 8.3.0_qoaxtqicpzj5p3ubthw53xafqm
       css-loader: 6.7.3_webpack@5.75.0

@@ -23,7 +23,7 @@ exports.default = function (source) {
             if (!styleProps?.length) return;
 
             const targetClasses = [];
-            
+
             // todo: style props 分离可操作和不可操作的
             // 在每一个 return 的地方记录不可转换的 style prop
             const restProps = [];
@@ -71,10 +71,14 @@ exports.default = function (source) {
                             return;
                         }
                         targetClass = result.join(' ');
-                    } else if (resultKeyMap['*']) { // one value like: padding-left: 1px => pl-1px
+                    }
+                    else if (resultKeyMap['#']) { // one value like: padding-left: 1px => pl-1px
+                        targetClass = `${resultKeyMap["#"]}-${originValue}`;
+                    }
+                    else if (resultKeyMap['*']) { // one value like: padding-left: 1px => pl-1px
                         targetClass = `${resultKeyMap["*"]}-${originValue}`;
                     }
-                    
+
                     if (!targetClass.length) {
                         restProps.push(property);
                         return;
@@ -111,6 +115,6 @@ exports.default = function (source) {
 
     const { code } = generator(sourceAst);
     return code;
-} 
+}
 
 exports.styleMap = map;

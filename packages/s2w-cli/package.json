@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "minimist": "^1.2.8",
-    "@sun-dock/core": "workspace:*"
+    "@sun-dock/core": "1.0.0"
   },
   "keywords": [],
   "author": "",
