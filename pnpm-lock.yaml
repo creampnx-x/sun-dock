@@ -19,7 +19,7 @@ importers:
 
   packages/s2w-cli:
     specifiers:
-      '@sun-dock/core': 1.0.0
+      '@sun-dock/core': 1.0.1
       minimist: ^1.2.8
     dependencies:
       '@sun-dock/core': link:../core
@@ -27,7 +27,7 @@ importers:
 
   packages/s2w-loader:
     specifiers:
-      '@sun-dock/core': workspace:*
+      '@sun-dock/core': 1.0.1
     dependencies:
       '@sun-dock/core': link:../core
 
@@ -65,8 +65,8 @@ importers:
       '@babel/core': 7.21.0
       '@babel/preset-env': 7.20.2_@babel+core@7.21.0
       '@babel/preset-react': 7.18.6_@babel+core@7.21.0
-      '@sun-dock/dock-cli': link:../packages/s2w-cli
-      '@sun-dock/s2w-loader': link:../packages/s2w-loader
+      '@sun-dock/dock-cli': 1.0.0
+      '@sun-dock/s2w-loader': 1.0.0
       babel-loader: 8.3.0_qoaxtqicpzj5p3ubthw53xafqm
       css-loader: 6.7.3_webpack@5.75.0
       html-webpack-plugin: 5.5.0_webpack@5.75.0
@@ -1361,6 +1361,20 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@sun-dock/dock-cli/1.0.0:
+    resolution: {integrity: sha512-jCeY5ASC66H2SspWG2edF3Ih4ZOmW1xJNybSAxBl113OoUuf0EfrcOihpdd36YKyIOaNdMa7l7KXBid/p+ApYA==}
+    hasBin: true
+    dependencies:
+      '@sun-dock/core': link:packages/core
+      minimist: 1.2.8
+    dev: true
+
+  /@sun-dock/s2w-loader/1.0.0:
+    resolution: {integrity: sha512-5pokqfpPVAkWMzZBCMyQZ5Ac6Zqws6bTVKwSXvtRrWU6QpHrcMxRNx6d6Z7xljUeipyNq0PEfGB4KY3ax7B98A==}
+    dependencies:
+      '@sun-dock/core': link:packages/core
     dev: true
 
   /@types/body-parser/1.19.2:
@@ -2985,7 +2999,6 @@ packages:
 
   /minimist/1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
-    dev: false
 
   /ms/2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
