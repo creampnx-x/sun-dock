@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const WindiCSSWebpackPlugin = require('windicss-webpack-plugin');
+ 
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -11,6 +12,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
+    new WindiCSSWebpackPlugin(),
   ],
   devServer: {
     static: {
@@ -24,7 +26,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "s2w-loader"],
+        use: ["babel-loader", "@sun-dock/s2w-loader"],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },

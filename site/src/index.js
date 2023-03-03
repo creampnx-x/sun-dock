@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import Hello from "./Hello";
+import 'windi.css';
 
 const container = document.getElementById("root");
 const root = createRoot(container);

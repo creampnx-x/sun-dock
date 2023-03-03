@@ -59,7 +59,7 @@ exports.default = function (source) {
                         targetClass = result;
                     } else if (resultKeyMap['get']) { // for spacing like: padding: ''
                         const result = resultKeyMap['get'](originValue);
-                        if (!result.length) {
+                        if (!result?.length) {
                             // maybe write wrong.
                             restProps.push(property);
                             return;

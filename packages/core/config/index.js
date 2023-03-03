@@ -20,7 +20,7 @@ exports.Map = {
             // margin as same.
             // todo: regExp `done`
             const spacings = value.trim().split(/\s+/g);
-            // this's not good function;
+            // this's not good function style;
             if (spacings.length === 1) return [
                 `p-${spacings[0]}`
             ];
@@ -33,7 +33,7 @@ exports.Map = {
                 `py-${spacings[1]}`,
                 `pb-${spacings[2]}`,
             ];
-            else if (spacings.length === 4) [
+            else if (spacings.length === 4) return [
                 `pt-${spacings[0]}`,
                 `pr-${spacings[1]}`,
                 `pb-${spacings[2]}`,
