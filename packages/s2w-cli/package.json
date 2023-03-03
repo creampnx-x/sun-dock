@@ -1,10 +1,10 @@
 {
-  "name": "@sun-dock/s2w-cli",
+  "name": "@sun-dock/dock-cli",
   "version": "1.0.0",
   "description": "",
   "main": "bin.js",
   "bin": {
-    "s2w": "bin.js"
+    "dock": "bin.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

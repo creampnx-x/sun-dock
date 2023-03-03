@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --mode development",
-    "format:s2w": "s2w"
+    "format:dock": "dock"
   },
   "repository": {
     "type": "git",
