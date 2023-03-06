@@ -34,6 +34,10 @@ const testSamples = [
     {
         input: `<div style={{ strokeWidth: '4' }} />`,
         output: `className="stroke-width-4"`
+    },
+    {
+        input: `<div style={{ textAlign: 'center !important' }} />`,
+        output: `className="!text-center"`
     }
 ];
 

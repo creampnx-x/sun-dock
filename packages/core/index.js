@@ -56,18 +56,18 @@ exports.default = function (source) {
                         targetClass = `${resultKeyMap["*"]}-${value.value}px`;
                     }
                     //targetClass.concat(`${resultKeyMap["*"]}-${value.value}px`);
-                } else {
+                } else if (value.type === 'StringLiteral'){
                     // String: if Map[*] exist: add sufix;
                     // else if Map[value] exist: using result;
                     // else finish;
                     let originValue = value.value?.trim();
-                    const result = resultKeyMap[originValue];
                     let isImportant = false;
-
                     if (originValue.indexOf('!important') !== -1) {
-                        originValue = originValue.replace('!important').trim();
+                        originValue = originValue.replace('!important', '').trim();
                         isImportant = true;
                     }
+
+                    const result = resultKeyMap[originValue];
 
                     if (result) { // fixed props: text-align: center => text-center
                         targetClass = result;
@@ -96,7 +96,10 @@ exports.default = function (source) {
                         targetClass = `!${targetClass}`;
                     }
                 }
-                targetClasses.push(targetClass);
+                if (targetClass.length === 0)
+                    restProps.push(property);
+                else
+                    targetClasses.push(targetClass);
             });
 
             // all of style props cant trans, so recover it.
