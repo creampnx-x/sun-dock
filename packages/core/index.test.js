@@ -43,6 +43,10 @@ const testSamples = [
         input: `<div style={{ padding: '100%', margin: 'calc(100%)' }} />`,
         output: `className="p-[100%] m-[calc(100%)]"`
     },
+    {
+        input: `<div style={{ fontWeight: 500 }} />`,
+        output: `className="font-500"`
+    },
 ];
 
 ((samples) => {

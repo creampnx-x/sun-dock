@@ -6,7 +6,7 @@ exports.default = {
         '*': 'text'
     },
     'fontWeight': {
-        '*': 'font'
+        '#': 'font'
     },
     'letterSpacing': {
         '*': 'tracking'
