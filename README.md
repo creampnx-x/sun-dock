@@ -28,7 +28,8 @@ pnpm i @sun-dock/dock-cli -D
 
 使用`--query`参数通过以下命令查询:
 ```bash
-pnpm run dock --query=padding:4,paddingTop:4,textAlign:\"center\" # 注意不要有空格
+pnpm run dock --query=padding:4,paddingTop:4,textAlign:\"center\"
+
 # The input style pair "padding:4,paddingTop:4,textAlign:"center"" will tranform like this: 
 # <div className="p-4px pt-4px text-center" />;
 ```
