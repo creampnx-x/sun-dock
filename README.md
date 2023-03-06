@@ -73,3 +73,9 @@ pnpm i @sun-dock/s2w-loader -D
 > 详见 [减少重复渲染](https://www.debugbear.com/blog/react-rerenders#passing-objects-as-props)
 将 `object` 转化为 `string` 将减少重复渲染提高性能。
 
+
+### change log
+
+**v1.0.3**
+
++ add `!important` (not publish).

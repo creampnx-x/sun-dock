@@ -46,6 +46,9 @@ exports.default = function (source) {
                 let targetClass = "";
                 // todo: need optimize
                 // Numberic: sufix `-px`
+
+                // if (!important) repalce and add ! prefix
+
                 if (value.type === 'NumericLiteral' && Number.parseInt(value.value) >= 0) {
                     if (resultKeyMap['#']) {
                         targetClass = `${resultKeyMap["#"]}-${value.value}`;
@@ -57,8 +60,14 @@ exports.default = function (source) {
                     // String: if Map[*] exist: add sufix;
                     // else if Map[value] exist: using result;
                     // else finish;
-                    const originValue = value.value;
+                    let originValue = value.value?.trim();
                     const result = resultKeyMap[originValue];
+                    let isImportant = false;
+
+                    if (originValue.indexOf('!important') !== -1) {
+                        originValue = originValue.replace('!important').trim();
+                        isImportant = true;
+                    }
 
                     if (result) { // fixed props: text-align: center => text-center
                         targetClass = result;
@@ -81,6 +90,10 @@ exports.default = function (source) {
                     if (!targetClass.length) {
                         restProps.push(property);
                         return;
+                    }
+
+                    if (isImportant) {
+                        targetClass = `!${targetClass}`;
                     }
                 }
                 targetClasses.push(targetClass);
