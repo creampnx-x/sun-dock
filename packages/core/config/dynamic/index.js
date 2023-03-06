@@ -1,3 +1,5 @@
+const { formatString } = require('../../util');
+
 exports.default = {
     /** text */
     'fontSize': {
@@ -48,22 +50,22 @@ exports.default = {
             const spacings = value.trim().split(/\s+/g);
             // this's not good function style;
             if (spacings.length === 1) return [
-                `p-${spacings[0]}`
+                `p-${formatString(spacings[0])}`
             ];
             else if (spacings.length === 2) return [
-                `py-${spacings[0]}`,
-                `px-${spacings[1]}`
+                `py-${formatString(spacings[0])}`,
+                `px-${formatString(spacings[1])}`
             ];
             else if (spacings.length === 3) return [
-                `pt-${spacings[0]}`,
-                `py-${spacings[1]}`,
-                `pb-${spacings[2]}`,
+                `pt-${formatString(spacings[0])}`,
+                `py-${formatString(spacings[1])}`,
+                `pb-${formatString(spacings[2])}`,
             ];
             else if (spacings.length === 4) return [
-                `pt-${spacings[0]}`,
-                `pr-${spacings[1]}`,
-                `pb-${spacings[2]}`,
-                `pl-${spacings[3]}`,
+                `pt-${formatString(spacings[0])}`,
+                `pr-${formatString(spacings[1])}`,
+                `pb-${formatString(spacings[2])}`,
+                `pl-${formatString(spacings[3])}`,
             ];
             else return []; // means cant trans.
             // 返回 class
@@ -93,22 +95,22 @@ exports.default = {
             const spacings = value.trim().split(/\s+/g);
             // this's not good function style;
             if (spacings.length === 1) return [
-                `m-${spacings[0]}`
+                `m-${formatString(spacings[0])}`
             ];
             else if (spacings.length === 2) return [
-                `my-${spacings[0]}`,
-                `mx-${spacings[1]}`
+                `my-${formatString(spacings[0])}`,
+                `mx-${formatString(spacings[1])}`
             ];
             else if (smacings.length === 3) return [
-                `mt-${spacings[0]}`,
-                `my-${spacings[1]}`,
-                `mb-${spacings[2]}`,
+                `mt-${formatString(spacings[0])}`,
+                `my-${formatString(spacings[1])}`,
+                `mb-${formatString(spacings[2])}`,
             ];
             else if (spacings.length === 4) return [
-                `mt-${spacings[0]}`,
-                `mr-${spacings[1]}`,
-                `mb-${spacings[2]}`,
-                `ml-${spacings[3]}`,
+                `mt-${formatString(spacings[0])}`,
+                `mr-${formatString(spacings[1])}`,
+                `mb-${formatString(spacings[2])}`,
+                `ml-${formatString(spacings[3])}`,
             ];
             else return []; // means cant trans.
             // 返回 class
@@ -170,9 +172,9 @@ exports.default = {
             if (type === 'number') { // -2
                 return [`-top-${value}px`]
             } else if (spacing < 0) {
-                return [`-top-${value}`]
+                return [`-top-${formatString(value)}`]
             } else {
-                return [`top-${value}`]
+                return [`top-${formatString(value)}`]
             }
         }
     },
@@ -185,9 +187,9 @@ exports.default = {
             if (type === 'number') { // -2
                 return [`-right-${value}px`]
             } else if (spacing < 0) {
-                return [`-right-${value}`]
+                return [`-right-${formatString(value)}`]
             } else {
-                return [`right-${value}`]
+                return [`right-${formatString(value)}`]
             }
         }
     },
@@ -200,9 +202,9 @@ exports.default = {
             if (type === 'number') { // -2
                 return [`-bottom-${value}px`]
             } else if (spacing < 0) {
-                return [`-bottom-${value}`]
+                return [`-bottom-${formatString(value)}`]
             } else {
-                return [`bottom-${value}`]
+                return [`bottom-${formatString(value)}`]
             }
         }
     },
@@ -215,9 +217,9 @@ exports.default = {
             if (type === 'number') { // -2
                 return [`-left-${value}px`]
             } else if (spacing < 0) {
-                return [`-left-${value}`]
+                return [`-left-${formatString(value)}`]
             } else {
-                return [`left-${value}`]
+                return [`left-${formatString(value)}`]
             }
         }
     },

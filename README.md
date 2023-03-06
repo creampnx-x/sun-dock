@@ -78,4 +78,8 @@ pnpm i @sun-dock/s2w-loader -D
 
 **v1.0.3**
 
-+ add `!important` (not publish).
++ add `!important`.
+
+**v1.0.4**
+
++ add `%` | `calc`z as => [% | calc];

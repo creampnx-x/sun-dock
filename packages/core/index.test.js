@@ -38,7 +38,11 @@ const testSamples = [
     {
         input: `<div style={{ textAlign: 'center !important' }} />`,
         output: `className="!text-center"`
-    }
+    },
+    {
+        input: `<div style={{ padding: '100%', margin: 'calc(100%)' }} />`,
+        output: `className="p-[100%] m-[calc(100%)]"`
+    },
 ];
 
 ((samples) => {

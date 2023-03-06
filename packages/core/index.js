@@ -3,6 +3,7 @@ const traverse = require("@babel/traverse").default;
 const generator = require("@babel/generator").default;
 const types = require('@babel/types');
 const { map } = require('./config/index');
+const { formatString } = require('./util');
 
 // todo: 抽离内部处理函数
 exports.default = function (source) {
@@ -84,7 +85,7 @@ exports.default = function (source) {
                         targetClass = `${resultKeyMap["#"]}-${originValue}`;
                     }
                     else if (resultKeyMap['*']) { // one value like: padding-left: 1px => pl-1px
-                        targetClass = `${resultKeyMap["*"]}-${originValue}`;
+                        targetClass = `${resultKeyMap["*"]}-${formatString(originValue)}`;
                     }
 
                     if (!targetClass.length) {
