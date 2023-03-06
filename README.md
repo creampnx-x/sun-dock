@@ -5,6 +5,8 @@
 
 npm：https://www.npmjs.com/package/@sun-dock/dock-cli
 
+
+
 ## 使用
 
 `sun-dock` 会将不能转化的 style 保留下来，**不会**破毁代码逻辑。
@@ -21,6 +23,8 @@ pnpm i @sun-dock/dock-cli -D
 }
 ```
 
+<br />
+
 #### 查询 windicss class
 > 你**甚至**可以建个空项目只为了快速查询 windicss class，或者将 dock-cli 安装到全局下直接使用查询。
 
@@ -33,16 +37,23 @@ pnpm run dock --query=padding:4,paddingTop:4,textAlign:\"center\"
 ```
 可以看到 dock-cli 打印了一个 JSX，其中就包含了生成的所有 class，不再需要搜索直接 `一步到位`。
 
+<br/>
+
 #### 对`单个`文件转换
 
 使用`--filename`对的单个文件进行转换：
 ```bash
 pnpm run dock --filename=Hello.tsx
 ```
+
+<br />
+
 **为什么不支持批量修改？**
 
 考虑到可能出现的 `bug` 影响布局当时没发现但导致线上缺陷，所以提供单文件原子化修改，单功能验证避免**大规模纰漏**。
 > 你也可以在本地写脚本遍历文件夹，再在单文件上使用 `dock-cli`。ref：[遍历文件夹内文件](https://juejin.cn/post/6986462081444741134)
+
+<br />
 
 ### @sun-dock/s2w-loader
 
@@ -52,10 +63,14 @@ pnpm i @sun-dock/s2w-loader -D
 
 一个 webpack loader 提供编译时兜底能力防止某处没有修改的逃逸行为。`@sun-dock/s2w-loader` 的核心是 `@sun-dock/core`, loader 只是为他提供了一个~~响亮~~的名字。
 
+<br />
+
 ### @sun-dock/core
 
 处理 style 的核心包，你能使用它创建任何的插件，他只提供一个能力——转换 style 到 windcss class。默认导出一个函数接收一个包含代码的string参数返回了转换后的代码，另外导出了小驼峰
 形式的 style 到 class的转换表。详情查看源码: `core/config/index.js`.
+
+<br />
 
 ## 背景
 
@@ -65,6 +80,8 @@ pnpm i @sun-dock/s2w-loader -D
 
 2. `style` 拥有性能劣势但是类型优势，在开发中可以通过 `关键词匹配` + `回车` 直接编写，简单方便。但是它会引起重复渲染，尽管在 `React 18` 之后这种情况可能会被解决，
 但 `style` 依旧是个非常差劲的选择，原因如下：
+
+<br />
 
 ### 为什么不能用 `style prop`？
 
@@ -86,3 +103,7 @@ pnpm i @sun-dock/s2w-loader -D
 **v1.0.4**
 
 + add `%` | `calc`z as => [% | calc];
+
+**v1.0.5**
+
++ fix font weight
