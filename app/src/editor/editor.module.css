@@ -1,0 +1,10 @@
+.Editor {
+	width: 40vw;
+	height: 70vh;
+}
+
+.EditorContainer {
+	border: 1px #dadada solid;
+	border-radius: 4px;
+	padding: 10px;
+}

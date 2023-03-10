@@ -1,11 +1,19 @@
 {
   "name": "@sun-dock/core",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "test": "node index.test.js",
-    "gen:static": "node config/static/gen-static.js"
+    "gen:static": "node config/static/gen-static.js",
+    "build": "esbuild index.js --bundle --outfile=dist/index.js --format=esm"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +22,7 @@
     "@babel/generator": "^7.21.1",
     "@babel/parser": "^7.21.2",
     "@babel/traverse": "^7.21.2",
-    "@babel/types": "^7.21.2"
+    "@babel/types": "^7.21.2",
+    "esbuild": "^0.17.11"
   }
 }

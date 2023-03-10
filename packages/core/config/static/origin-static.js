@@ -3,7 +3,7 @@
  * * url: https://github.com/windicss/windicss/blob/4f705c7acb6cd83609f09c726d62cb2882ae85c7/src/lib/utilities/static.ts
  */
 
-const static = {
+const staticProps = {
     'decoration-slice': {
         'utility': {
             '-webkit-box-decoration-break': 'slice',
@@ -3601,4 +3601,4 @@ const static = {
 };
 
 
-exports.default = static;
+exports.default = staticProps;

@@ -1,25 +1,29 @@
 #!/usr/bin/env node
+
 /** this is only running on node.js */
 const fs = require('fs');
-const static = require('./origin-static').default;
+const staticProps = require('./origin-static').default;
 
 const map = {};
-Object.keys(static).forEach((key) => {
+Object.keys(staticProps).forEach((key) => {
     const result = key;
-    const propObject = static[key].utility;
+    const propObject = staticProps[key].utility;
     const keys = Object.keys(propObject);
-    // todo：如果大于两个且其他的不包含最短的那个就抛弃
-    if (keys.length > 1) {
-        let signal = false;
-        const lastProp = keys[keys.length - 1];
-        keys.forEach((restProp) => {
-            if (restProp.search(lastProp) === -1) {
-                signal = true;
-            }
-        })
 
-        if (signal) return;
-    }
+    // todo：如果大于两个且其他的不包含最短的那个就抛弃
+    // fix 3/10; 直接取最后一个
+
+    // if (keys.length > 1) {
+    //     let signal = false;
+    //     const lastProp = keys[keys.length - 1];
+    //     keys.forEach((restProp) => {
+    //         if (restProp.search(lastProp) === -1) {
+    //             signal = true;
+    //         }
+    //     })
+
+    //     if (signal) return;
+    // }
 
     const prop = keys[keys.length - 1];
     const value = propObject[prop];
@@ -35,6 +39,7 @@ Object.keys(static).forEach((key) => {
             i = formatProp.indexOf('-');
         }
     }
+    console.log(formatProp);
     // todo: ugly code.
     if (map[formatProp]) {
         if (valueIsArray) {
@@ -55,6 +60,7 @@ Object.keys(static).forEach((key) => {
     }
 });
 
-fs.writeFile('./static-config.json', JSON.stringify(map), (err) => {
+fs.writeFile('config/static/static-config.json', JSON.stringify(map), (err) => {
     if (err) throw err;
+    console.log('done');
 });

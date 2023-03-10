@@ -1,4 +1,4 @@
-const static = require('./static/static.json');
+const staticProps = require('./static/static-config.json');
 const dynamic = require('./dynamic/index').default;
 /**
  * 1. `data` static style map. like: textAlign: center.
@@ -7,6 +7,6 @@ const dynamic = require('./dynamic/index').default;
  * 4. `get() return []` => string value should be parse.
  */
 exports.map = {
-    ...static,
+    ...staticProps,
     ...dynamic
 };

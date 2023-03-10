@@ -1,13 +1,13 @@
 {
   "name": "@sun-dock/s2w-loader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@sun-dock/core": "1.0.4"
+    "@sun-dock/core": "1.0.5"
   },
   "keywords": [],
   "author": "",

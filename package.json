@@ -12,6 +12,7 @@
   "license": "ISC",
   "workspaces": [
     "packages/*",
-    "site"
+    "site",
+    "app"
   ]
 }

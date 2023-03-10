@@ -101,7 +101,7 @@ exports.default = {
                 `my-${formatString(spacings[0])}`,
                 `mx-${formatString(spacings[1])}`
             ];
-            else if (smacings.length === 3) return [
+            else if (spacings.length === 3) return [
                 `mt-${formatString(spacings[0])}`,
                 `my-${formatString(spacings[1])}`,
                 `mb-${formatString(spacings[2])}`,
