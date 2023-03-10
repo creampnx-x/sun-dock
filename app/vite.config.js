@@ -17,6 +17,6 @@ export default defineConfig({
   },
   define: {
     'process.env': {},
-    'Buffer': {}
+    // 'Buffer': {}
   },
 });
