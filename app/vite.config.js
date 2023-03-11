@@ -5,9 +5,9 @@ import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfil
 export default defineConfig({
   plugins: [
     solidPlugin(),
-    NodeGlobalsPolyfillPlugin({
-      buffer: true
-    })
+    // NodeGlobalsPolyfillPlugin({
+    //   buffer: true
+    // })
   ],
   server: {
     port: 3000,
