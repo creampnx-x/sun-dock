@@ -1,13 +1,10 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
+import { Buffer } from 'Buffer';
 
 export default defineConfig({
   plugins: [
     solidPlugin(),
-    // NodeGlobalsPolyfillPlugin({
-    //   buffer: true
-    // })
   ],
   server: {
     port: 3000,
@@ -17,7 +14,7 @@ export default defineConfig({
   },
   define: {
     'process.env': {},
-    // 'Buffer': {}
+    'Buffer': Buffer || {}
   },
   base: './'
 });
