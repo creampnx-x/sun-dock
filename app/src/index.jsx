@@ -1,10 +1,12 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
-
 import App from './App';
 import './user-worker';
 
+// import Buffer from "buffer";
+
 const root = document.getElementById('root');
+// globalThis.Buffer = Buffer;
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   throw new Error(
