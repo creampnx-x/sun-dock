@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "deploy": "sudo bash ./deploy.sh"
+    "deploy": "./deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
