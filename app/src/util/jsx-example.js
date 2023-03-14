@@ -21,7 +21,6 @@ const example =
     padding: 1,
     margin: '1px 2px 3px',
     display: 'flex',
-    position: 'unkonw',
 }} />;
 `;
 
