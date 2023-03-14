@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "depoly": "./depoly.sh"
+    "deploy": "./deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
